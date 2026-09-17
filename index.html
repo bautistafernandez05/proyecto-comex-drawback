@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Comex Argentina | Reintegros & Drawback (2020-2025)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #1F4E78;
+      --secondary: #2E75B6;
+      --light: #F2F4F7;
+      --dark: #1E293B;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .card {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid #CBD5E1;
+      padding: 0.6rem;
+      text-align: left;
+    }
+    th {
+      background-color: var(--secondary);
+      color: white;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--dark);
+      color: white;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Análisis Técnico de Comercio Exterior (2020–2025)</h1>
+    <p>Evolución de Exportaciones, Reintegros y Drawback en Argentina</p>
+    <small>Carrera: Comercio Internacional / Despachante de Aduana</small>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h3>Período Analizado</h3>
+        <p style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">2020 – 2025</p>
+      </div>
+      <div class="card">
+        <h3>Regímenes Estudiados</h3>
+        <p style="font-size: 1.1rem; color: var(--secondary);">Drawback (Dec. 1012/91) & Reintegros (Leyes 22.415 y 23.101)</p>
+      </div>
+      <div class="card">
+        <h3>Sectores Evaluados</h3>
+        <p style="font-size: 1.1rem; color: var(--primary);">Agroindustria y Forestoindustria</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <h2>Evolución del Valor FOB Exportado (USD)</h2>
+      <canvas id="fobChart" height="120"></canvas>
+    </div>
+
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <h2>Resumen de Modificaciones Normativas (Word)</h2>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Normativa</th>
+              <th>Organismo</th>
+              <th>Objeto Principal</th>
+              <th>Impacto Operativo Aduanero</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Decreto 789/2020</td>
+              <td>PEN</td>
+              <td>Ajuste alícuotas agro/forestal</td>
+              <td>Incentivo al valor agregado (3% al 5%)</td>
+            </tr>
+            <tr>
+              <td>Res. Gen. AFIP 4885/2020</td>
+              <td>AFIP - DGA</td>
+              <td>Cobro reintegros por SIM</td>
+              <td>Agilización del pago sujeto a divisas MULC</td>
+            </tr>
+            <tr>
+              <td>Res. Sec. Ind. 45/2022</td>
+              <td>Sec. Industria</td>
+              <td>Digitalización del Drawback</td>
+              <td>Emisión de Certificados CTD vía TAD</td>
+            </tr>
+            <tr>
+              <td>RG 5500/2024</td>
+              <td>ARCA / DGA</td>
+              <td>Validaciones informáticas SIM</td>
+              <td>Control automático de CUIT y Licencias</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Conclusiones para la Operativa Aduanera</h2>
+      <ul>
+        <li><strong>Invocación de Ventajas:</strong> Exige coincidencia estricta en declaraciones SIM con documentación de importación previa.</li>
+        <li><strong>Bloqueos de Pago:</strong> La principal causa de suspensión del cobro de reintegros es el atraso en la liquidación de divisas en el BCRA.</li>
+        <li><strong>Optimización con IA:</strong> El análisis estructurado de normativas optimiza la matriz de costo aduanero de las PYMES.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Proyecto Integrador - Comercio Internacional & Despachante de Aduana</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('fobChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+        datasets: [{
+          label: 'Harina/Pellets Soja (USD FOB)',
+          data: [8908000000, 11954000000, 12048000000, 8250000000, 9920000000, 10140000000],
+          backgroundColor: '#1F4E78'
+        }, {
+          label: 'Madera Aserrada Pino (USD FOB)',
+          data: [63000000, 98000000, 120900000, 76800000, 98600000, 115200000],
+          backgroundColor: '#2E75B6'
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
