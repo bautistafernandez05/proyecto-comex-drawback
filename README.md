@@ -17,6 +17,8 @@
 ---
 
 ## 📁 Estructura de Archivos (en Google Drive)
-* `Estadisticas_Exportaciones_2020_2025.xlsx`: Datos quinquenales de volumen (toneladas) y valor FOB (USD) por posición NCM.
-* `Matriz_Calculo_Drawback_Reintegros.xlsx`: Cuadro comparativo de alícuotas de Reintegro y recuperación por Drawback.
-* `Informe_Normativo_Drawback_Reintegros.docx`: Análisis técnico de decretos del PEN y resoluciones de AFIP/DGA (2020-2025).
+https://docs.google.com/spreadsheets/d/1N-O80srYeIHBwFURiImZQhVzsvwXwmWtp1H5Q1U30d0/edit?usp=drivesdk : Datos quinquenales de volumen (toneladas) y valor FOB (USD) por posición NCM.
+* https://docs.google.com/spreadsheets/d/1R1MmZ3BdiOFilt8SiQMAVXkby7VscO4SqKYRSJ-3erw/edit?usp=drivesdk: Cuadro comparativo de alícuotas de Reintegro y recuperación por Drawback.
+* https://docs.google.com/document/d/1fkeSFQZIaCeDvIK8cZfi-Q276QwrvU4gjZ8BpxpSEaA/edit?usp=drivesdk : Análisis técnico de decretos del PEN y resoluciones de AFIP/DGA (2020-2025)
+
+link de ntlify: https://proyecto-comex-drawback.netlify.app
